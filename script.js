@@ -6,7 +6,6 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 
 const onShowModal = () => {
-  console.log('brtbbbbbbbbb');
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
@@ -19,3 +18,7 @@ const onCloseModal = () => {
 showModalBtns.forEach(btn => btn.addEventListener('click', onShowModal));
 closeModalBtn.addEventListener('click', onCloseModal);
 overlay.addEventListener('click', onCloseModal);
+document.addEventListener('keyup', $event => {
+  const isModalDisplayed = !modal.classList.contains('hidden');
+  if ($event.key === 'Escape' && isModalDisplayed) onCloseModal();
+});
